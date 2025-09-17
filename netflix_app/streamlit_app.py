@@ -103,16 +103,18 @@ st.markdown("""
 # ---------------------------
 @st.cache_data
 def load_data():
-    if os.path.exists("netflix_titles.csv"):
-        df = pd.read_csv("netflix_titles.csv")
-    elif os.path.exists("netflix_titles.xlsx"):
-        df = pd.read_excel("netflix_titles.xlsx", engine="openpyxl")
+    if os.path.exists("netflix_app/netflix_titles.csv"):
+        df = pd.read_csv("netflix_app/netflix_titles.csv")
+    elif os.path.exists("netflix_app/netflix_titles.xlsx"):
+        df = pd.read_excel("netflix_app/netflix_titles.xlsx", engine="openpyxl")
     else:
         raise FileNotFoundError("No Netflix dataset found!")
+
     df.columns = df.columns.str.strip().str.lower()
     return df
 
 df = load_data()
+
 
 # ---------------------------
 # Session State
